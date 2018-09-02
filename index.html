@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Sue J. Stevens</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--favicon-->
+    <link rel="shortcut icon" href="assets/images/favicon.png" />
     <!--link rel="shortcut icon" href="assets/images/favicon.png" /-->
     <!--Bootstrap stylesheet-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -37,111 +37,73 @@
             
 
         <div class="Row">
-            <div class="col-12">
-                <h1>Instructions</h1>
-                <ul>
-                    <li>There will be four crystals displayed as buttons on the page.</li>
-                    <li>The player will be shown a random number at the start of the game.</li>
-                    <li>When the player clicks on a crystal, it will add a specific amount of points to the player's total score.</li>
+            <div class="col-sm-12">
+                <a id="popoverData" class="btn" href="#" data-content="Click to reveal or hide instructions." rel="popover" data-placement="bottom" data-trigger="hover">
+                    <button id="instructions_close" type="button" class="close p-2 text-right" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </a>
+                <div id="instructions" class="d-block">
+                    <h1>Instructions</h1>
                     <ul>
-                        <li>Your game will hide this amount until the player clicks a crystal.</li>
-                        <li>When they do click one, update the player's score counter.</li>
+                        <li>The player will be shown a random number at the start of the game.</li>
+                        <li>Each of the four crystals displayed are assigned a random value.</li>
+                        <li>When the player clicks on a crystal, it will add a specific amount of points to the player's total score.</li>
+                        <li>The player wins if their total score matches the random number from the beginning of the game.</li>
+                        <li>The player loses if their score goes above the random number.</li>
+                        <li>The game restarts with new random numbers whenever the player wins or loses.</li>
                     </ul>
-                    <li>The player wins if their total score matches the random number from the beginning of the game.</li>
-                    <li>The player loses if their score goes above the random number.</li>
-                    <li>he game restarts whenever the player wins or loses.</li>
-                    <ul>
-                        <li>When the game begins again, the player should see a new random number. Also, all the crystals will have four new hidden values. Of course, the user's score (and score counter) will reset to zero.</li>
-                    </ul>
-                    <li>The app should show the number of games the player wins and loses. To that end, do not refresh the page as a means to restart the game.</li>
-                </ul>
-                <h2>Option 1 Game design notes</h2>
-                <ul>
-                    <li>he random number shown at the start of the game should be between 19 - 120.</li>
-                    <li>Each crystal should have a random hidden value between 1 - 12.</li>
-                </ul>
+                    <hr/>
+                </div>
             </div>
         </div> 
 
         <div class="row">
             <div class="col-lg-12">
-        
-                <!-- Row1 cards: Holds the Number to Match -->
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title"><strong>Number to Match</strong></h3>
-                    </div>
-                    <div class="card-body">
-                        <h3 id="matchNum">69</h3>
-                    </div>
-                </div>
+                <h3 class="p-3"><strong>Number to Match: <span id="matchNum">69</span></strong></h3>
             </div>
         </div>
-                          
-
 
         <div class="row">
-            <div class="col-lg-12">
-                
-                <!-- Second card: Holds the Crystal Pictures. -->
-                <div class="card">
-                <div class="card-body">
-                    <!-- Images)-->
-                    <!--ol class='carousel-indicators w-100 text-center position-static d-inline-block mx-auto m-1'-->
-                    <ol class="d-inline-block m-1">
-                        <li class="d-inline p-1">
-                            <img class="d-inline p-1 crystal" id="crystal-red" src='assets/images/red1.png' alt='Red Crystal' value=1 />
-                            <span id="red">R</span>
-                        </li>
-                        <li class="d-inline p-1">
-                            <img class="d-inline p-1 crystal" id="crystal-blue" src='assets/images/blue1.jpg' alt='Blue Crystal' value=2 />
-                            <span id="blue">B</span>
-                        </li>
-                        <li class="d-inline p-1">
-                            <img class="d-inline p-1 crystal" id="crystal-yellow" src='assets/images/yellow.png' alt='Yellow Crystal' value=3 />
-                            <span id="yellow">Y</span>
-                        </li>
-                        <li class="d-inline p-1">
-                            <img class="d-inline p-1 crystal" id="crystal-green" src='assets/images/green.png' alt='Green Crystal' value=4 />
-                            <span id="green">G</span>
-                        </li>
-                    </ol>
-                </div>
-                </div>
-        
-                <!-- Third card: Holds the Score -->
-                <div class="card">
-                <div class="card-body">
-                    <strong>Running Total: </strong> <span id="runningCalc"></span>
-                </div>
-                </div>
-        
-                <!-- Fourth card: Holds the number of Wins. -->
-                <div class="card">
-                <div class="card-body">
-                    <strong>Wins: </strong> <span id="winCounter">0</span>
-                </div>
-                </div>
-        
-                <!-- Fifth card: Holds the number of Losses. -->
-                <div class="card">
-                <div class="card-body">
-                    <strong>Losses: </strong> <span id="lossCounter">0</span>
-                </div>
-                </div>
-    
-                <!-- Hidden Card: Holds the value the computer picked. -->
-                <div class="card d-none">
-                <div class="card-body">
-                    <strong>Computer Pick: </strong> <span id="computerPick"></span>
-                </div>
-                </div>
-    
-            </div>
+            <div class="col-sm-12">
+                <ol class="d-inline-block m-1">
+                    <li class="d-inline p-1">
+                        <img class="img-responsive d-inline p-1 crystal" id="crystal-red" src='assets/images/red2_175x200.png' alt='Red Crystal' value=1 />
+                        <span id="red" class="d-none">R</span>
+                    </li>
+                    <li class="d-inline p-1">
+                        <img class="img-responsive d-inline p-1 crystal" id="crystal-blue" src='assets/images/blue2_175x200.png' alt='Blue Crystal' value=2 />
+                        <span id="blue" class="d-none">B</span>
+                    </li>
+                    <li class="d-inline p-1">
+                        <img class="img-responsive d-inline p-1 crystal" id="crystal-yellow" src='assets/images/yellow2_175x200.png' alt='Yellow Crystal' value=3 />
+                        <span id="yellow" class="d-none">Y</span>
+                    </li>
+                    <li class="d-inline p-1">
+                        <img class="img-responsive d-inline p-1 crystal" id="crystal-green" src='assets/images/green2_175x200.png' alt='Green Crystal' value=4 />
+                        <span id="green" class="d-none">G</span>
+                    </li>
+                </ol>
             </div>
         </div>
         
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="p-3"><strong>Total Score: </strong> <span id="runningCalc"></span></strong></h3>
+            </div>
+        </div>
         
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="p-3"><strong>Wins: </strong> <span id="winCounter">0</span></h3>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="p-3"><strong>Losses: </strong> <span id="lossCounter">0</span></h3>
+            </div>
+        </div>
 
     </main>
 

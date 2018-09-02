@@ -4,7 +4,7 @@ var game = {
     crystals : [ "red", "blue",  "yellow", "green" ],
     crystalVal : [ 0, 0, 0, 0],
     matchNum : 0,
-    test: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ,12],
+    valDeck: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ,12],
 
     runningCalc : 0,
     wins : 0,
@@ -56,14 +56,12 @@ $(function() {
         switch(true) {
             case (game.runningCalc === game.matchNum):
                 game.wins += 1;
-                console.log("Game Wins: "+ game.wins);
                 $("#winCounter").text(game.wins);
                 game.state = "over";
                 restart();
                 break;
             case (game.runningCalc >= game.matchNum):
                 game.losses += 1;
-                console.log("Game Losses: " +game.losses);
                 $("#lossCounter").text(game.losses);
                 game.state = "over";
                 restart();
@@ -88,11 +86,11 @@ $(function() {
         //Developer Note:  This is clearly bad instruction as the number 1 is allowed per the video and so is 12.
         //question: duplicate allowed? --developer says no
         //https://www.frankmitchell.org/2015/01/fisher-yates/
-        game.shuffle(game.test);
+        game.shuffle(game.valDeck);
         for (var i=0; i<game.crystals.length; i++) {
 
             //return 1st four values in the shuffled array
-            game.crystalVal[i] = ( game.test[i] );
+            game.crystalVal[i] = ( game.valDeck[i] );
             //display but just for development purposes
             $("#"+game.crystals[i]).text(game.crystalVal[i]);
             $("#crystal-"+game.crystals[i]).attr("value", game.crystalVal[i]);
@@ -100,6 +98,42 @@ $(function() {
 
     };
 
+
+
+    /*--    _
+    .__(.)< (MEOW)
+     \___)   
+~~~~~~~~~~~~~~~~~~*/   
+
+$("#instructions_close").on("click", function() {
+
+    closeDiv("#instructions");
+
+});
+
+    function closeDiv(elID) {
+        //get class attribute of Toggle
+        var str = $(elID).attr("class");
+
+        //check to see if class attributes include either the display none or the display block class
+        var n = str.search("d-none"); //then toggle to d-block
+        var b = str.search("d-block"); //then toggle to d-none
+
+        //toggle the class
+        if (n>=0) {
+            $(elID).removeClass( "d-none" ).addClass( "d-block" );
+        } else {
+            $(elID).removeClass( "d-block" ).addClass( "d-none" );
+        }
+
+    } 
+
+/*--    _
+.__(.)< (MEOW)
+ \___)   
+~~~~~~~~~~~~~~~~~~*/    
+
+    $('#popoverData').popover();
 
 
     
