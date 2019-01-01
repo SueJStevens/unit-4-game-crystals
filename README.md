@@ -1,5 +1,5 @@
 # Crystal Collector
-Simple, fun, interactive game for web browsers to demo features of jQuery library.
+Simple, fun, interactive game for web browsers to demo features of jQuery library.     
 Bootcamp Assignment 8/25/2018 - Crystal Collector Game
 
 ## Demo
